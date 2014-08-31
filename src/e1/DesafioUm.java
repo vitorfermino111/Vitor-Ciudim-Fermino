@@ -89,7 +89,7 @@ class EstruturaDados{
                  if (x == 0)
                      break;
                  else
-                     curIn = curIn - 1;
+                     curIn = x;
              }
              
              for (int y=curIn; StringVetor[y].charAt(0) == e.charAt(0); y++)
