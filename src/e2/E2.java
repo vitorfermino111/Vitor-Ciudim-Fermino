@@ -95,7 +95,6 @@ class ArrayOrdenado
 //--------------------------------------------------------------
    public boolean delete(String searchName)
       {                              
-          boolean bo = true;
       for(int j=0; j<n; j++){        // varre o vetor 
          if( searchName.equals(a[j]) ){
             for(int k=j; k<n; k++){ // move os mais altos para "frente"

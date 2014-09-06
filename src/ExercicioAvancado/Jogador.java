@@ -4,10 +4,10 @@ package ExercicioAvancado;
 public class Jogador 
 {
    private String nome;     // instacia das variáveis 
-   private int altura;
+   private double altura;
    private int idade;
 //--------------------------------------------------------------
-      public Jogador(String nome, int altura, int a)
+      public Jogador(String nome, double altura, int a)
       {                               
       this.nome = nome;
       this.altura = altura;
@@ -23,5 +23,8 @@ public class Jogador
 //--------------------------------------------------------------
    public int getIdade()           // retorna a idade do jogador
       { return idade; }
+//--------------------------------------------------------------
+   public String getNome()           // retorna a idade do jogador
+      { return nome; }
 }
 

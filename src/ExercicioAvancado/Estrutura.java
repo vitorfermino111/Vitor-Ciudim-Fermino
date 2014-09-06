@@ -1,19 +1,18 @@
 package ExercicioAvancado;
 
 public class Estrutura {
-    private Jogador[] a;               // comentario aqui
-   private int n;               /// comentario aqui
-   private static int curIn;
+    private Jogador[] a;               // declaração de váriaveis
+    private int n;    
+    private static int curIn;
 
-   public Estrutura(int max)    // comentario aqui
+   public Estrutura(int max)    // determina o numero de jogadores
       {
-      a = new Jogador[max];               // comentario aqui
-      n = 0;                        // comentario aqui
+      a = new Jogador[max];              
+      n = 0;                        
       }
 //--------------------------------------------------------------
-   @SuppressWarnings("empty-statement")
-   public Jogador find(int e)
-      {                              // comentario aqui
+   public Jogador findOrdenado(int e)
+      {                              // encontra jogadores com a idade determina
       if (curIn != n){
       int lowerBound = 0;
       int upperBound = n-1;        
@@ -46,22 +45,41 @@ public class Estrutura {
                upperBound = curIn - 1; // esta na metade de baixo
             }  // fim do else de divisão de range
       }  
-       return null;
+        return null;
       }// end find()
-//--------------------------------------------------------------                                    // put person into array
-   public void insert(String nome, String profissao, int idade)
+//--------------------------------------------------------------  
+   public String findLinear(String nome)
+   {
+       for(int x = 0; x < n ; x++)
+       {
+           if (a[x].getNome().equals(nome))
+           {
+               return ("O nome encontrado foi: "+nome);
+           }
+       }
+        return "O nome não foi encontardo!";
+   }
+//--------------------------------------------------------------              
+   public void insert(String nome, double altura, int idade)
       {
-      a[n] = new Jogador(nome, altura, idade);
-      n++;                          // comentario aqui
+          int j;
+          a[n] = new Jogador(nome, altura, idade);
+      for(j=0; j<n; j++)        // localiza onde esse elemento se encaixa
+         if(a[j].getIdade() < idade)            // Usando aqui busca linear
+         {a[n] = new Jogador(nome, altura, idade);}// insere o elemento na posição necessária
+         else{
+             a[n] = a[n-1];
+             a[n-1] = new Jogador(nome, altura, idade);
+         }
+      n++;
       }
 //--------------------------------------------------------------
    public boolean delete(String searchName)
       {                              
-          boolean bo = true;
       for(int j=0; j<n; j++){        // varre o vetor 
-         if( searchName.equals(a[j]) ){
+         if( searchName.equals(a[j].getNome())){
             for(int k=j; k<n; k++){ // move os mais altos para "frente"
-                System.out.println("O nome " + a[k] + " foi excluido na linha " + (k+1) + " do vetor.");
+                System.out.println("O nome " + a[k].getNome() + " foi excluido na linha " + (k+1) + " do vetor.");
                 if (k+1==n) 
                 n--;
                 else{
@@ -71,14 +89,13 @@ public class Estrutura {
                 return true;
             }
           }
-         return false;
         }
-       return true;
+       return false;
       }
 //--------------------------------------------------------------
    public void display()            // comentario aqui
       {
       for(int j=0; j<n; j++)       // comentario aqui
-         a[j].displayPessoa();          // comentario aqui
+         a[j].displayJogador();          // comentario aqui
       }
 }
