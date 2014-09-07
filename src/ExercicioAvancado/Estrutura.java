@@ -13,36 +13,36 @@ public class Estrutura {
 //--------------------------------------------------------------
    public Jogador findOrdenado(int e)
       {                              // encontra jogadores com a idade determina
-      if (curIn != n){
+      for (int y = curIn; y<n ; y++){
       int lowerBound = 0;
       int upperBound = n-1;        
             curIn = (lowerBound + upperBound ) / 2;
-         if(a[curIn].getIdade() == e)
+         if(a[y].getIdade() == e)
          {   
-             for (int x=curIn; a[x].getIdade() == e; x--)
+             for (int x=y; a[x].getIdade() == e; x--)
              {                
                  if (x == 0)
                      break;
                  else
-                     curIn = x;
+                     y = x;
              }
              
-             for (int y=curIn; a[y].getIdade() == e; y++)
-             {  
-                 a[y].displayJogador(); 
-                 if (y == n-1)
-                     break;                                                 
+             for (int z=y; a[z].getIdade() == e; z++)
+             {                  
+                 if (z == n-1)
+                     break;   
+                 return a[z];
              }
-             curIn = n;
+             y = n;
          }                  // encontrei!
          else if(lowerBound > upperBound)
                  System.out.println("A idade não foi encontarda.");              // não pude encontra-lo
          else                          // divide o range
             {
-            if(a[curIn].getIdade() > e)
-               lowerBound = curIn + 1; // esta na metade de cima
+            if(a[y].getIdade() < e)
+               lowerBound = y + 1; // esta na metade de cima
             else
-               upperBound = curIn - 1; // esta na metade de baixo
+               upperBound = y - 1; // esta na metade de baixo
             }  // fim do else de divisão de range
       }  
         return null;
@@ -52,9 +52,9 @@ public class Estrutura {
    {
        for(int x = 0; x < n ; x++)
        {
-           if (a[x].getNome().equals(nome))
+           if (a[x].getNome().charAt(0) == nome.charAt(0))
            {
-               return ("O nome encontrado foi: "+nome);
+               return ("O resultado: "+nome);
            }
        }
         return "O nome não foi encontardo!";
