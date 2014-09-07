@@ -14,19 +14,21 @@ public class Estrutura {
    public void findOrdenado(int e)
       {                              // encontra jogadores com a idade determina
       int lowerBound = 0;
-      int upperBound = n-1; 
+      int upperBound = n-1;
+      for (int g = curIn; g<n; g++){
       if (curIn != n){
             curIn = (lowerBound + upperBound ) / 2;
          if(a[curIn].getIdade() == e)
          {   
-             for (int x=curIn; a[curIn].getIdade() == e; x--)
+             for (int x=curIn; a[x].getIdade() == e; x--)
              {                  
-                 System.out.println("Nome: "+a[x].getNome()+", altura: "+a[x].getAltura()+", idade: "+a[x].getIdade());
+                 //System.out.println("Nome: "+a[x].getNome()+", altura: "+a[x].getAltura()+", idade: "+a[x].getIdade());
+                 curIn = x;
                  if (x==0)
                      break;
              }
-             
-             for (int z=curIn+1; a[curIn+1].getIdade() == e; z++)
+             if (curIn + 1 != n)
+             for (int z=curIn; a[z].getIdade() == e; z++)
              { 
                  System.out.println ("Nome: "+a[z].getNome()+", altura: "+a[z].getAltura()+", idade: "+a[z].getIdade()); 
                  if (z == n-1)
@@ -44,6 +46,7 @@ public class Estrutura {
                upperBound = curIn - 1; // esta na metade de baixo
             }  // fim do else de divisão de range
       }
+      }
       }// end find()
 //--------------------------------------------------------------  
    public void findLinear(String nome)
@@ -55,7 +58,7 @@ public class Estrutura {
                System.out.println("O resultado; nome: "+a[x].getNome()+", altura: "+a[x].getAltura()+", idade: "+a[x].getIdade());
            }
            else 
-               if(x == n)
+               if(x == n-1)
                System.out.println ("O nome não foi encontardo!");
        }      
    }
@@ -79,18 +82,14 @@ public class Estrutura {
       {                              
       for(int j=0; j<n; j++){        // varre o vetor 
          if( a[j].getNome().charAt(0) == e.charAt(0)){
-            for(int k=j; k<n; k++){ // move os mais altos para "frente"
+            for(int k=j; k<=n; k++){ // move os mais altos para "frente"
                 System.out.println("O nome " + a[k].getNome() + " foi excluido na linha " + (k+1) + " do vetor.");
-                if (k+1==n) 
-                n--;
-                else{
                     a[k] = a[k+1];
                     n--;
                 }
                 return true;
             }
           }
-        }
        return false;
       }
 //--------------------------------------------------------------
