@@ -29,15 +29,15 @@ public class Usuario {
           s.insert(nome, altura, idade);
           } 
           
-          System.out.println("\nMuito Bem! Agora digite um nome para encontrar!");
+          System.out.println("\nMuito Bem! Agora digite uma letra para encontrar!");
           nome = entrada2.nextLine();
-          System.out.println(s.findLinear(nome));
+          s.findLinear(nome);
           
           System.out.println("\nMuito Bem! Agora digite uma idade para encontrar!");
           idade = entrada.nextInt();
           s.findOrdenado(idade);
           
-          System.out.println("\nMuito Bem! Selecione um nome de jogador para deletar:");
+          System.out.println("\nMuito Bem! Selecione uma letra de jogador para deletar:");
           nome = entrada2.nextLine();
           if (!s.delete(nome))
               System.out.println("Não foi encontrado o nome!");

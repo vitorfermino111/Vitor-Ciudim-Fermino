@@ -11,61 +11,62 @@ public class Estrutura {
       n = 0;                        
       }
 //--------------------------------------------------------------
-   public Jogador findOrdenado(int e)
+   public void findOrdenado(int e)
       {                              // encontra jogadores com a idade determina
-      for (int y = curIn; y<n ; y++){
       int lowerBound = 0;
-      int upperBound = n-1;        
+      int upperBound = n-1; 
+      if (curIn != n){
             curIn = (lowerBound + upperBound ) / 2;
-         if(a[y].getIdade() == e)
+         if(a[curIn].getIdade() == e)
          {   
-             for (int x=y; a[x].getIdade() == e; x--)
-             {                
-                 if (x == 0)
+             for (int x=curIn; a[curIn].getIdade() == e; x--)
+             {                  
+                 System.out.println("Nome: "+a[x].getNome()+", altura: "+a[x].getAltura()+", idade: "+a[x].getIdade());
+                 if (x==0)
                      break;
-                 else
-                     y = x;
              }
              
-             for (int z=y; a[z].getIdade() == e; z++)
-             {                  
+             for (int z=curIn+1; a[curIn+1].getIdade() == e; z++)
+             { 
+                 System.out.println ("Nome: "+a[z].getNome()+", altura: "+a[z].getAltura()+", idade: "+a[z].getIdade()); 
                  if (z == n-1)
-                     break;   
-                 return a[z];
+                     break;
              }
-             y = n;
+             curIn = n;
          }                  // encontrei!
          else if(lowerBound > upperBound)
-                 System.out.println("A idade não foi encontarda.");              // não pude encontra-lo
+                 System.out.println ("A idade não foi encontarda.");              // não pude encontra-lo
          else                          // divide o range
             {
-            if(a[y].getIdade() < e)
-               lowerBound = y + 1; // esta na metade de cima
+            if(a[curIn].getIdade() < e)
+               lowerBound = curIn + 1; // esta na metade de cima
             else
-               upperBound = y - 1; // esta na metade de baixo
+               upperBound = curIn - 1; // esta na metade de baixo
             }  // fim do else de divisão de range
-      }  
-        return null;
+      }
       }// end find()
 //--------------------------------------------------------------  
-   public String findLinear(String nome)
+   public void findLinear(String nome)
    {
        for(int x = 0; x < n ; x++)
        {
            if (a[x].getNome().charAt(0) == nome.charAt(0))
            {
-               return ("O resultado: "+nome);
+               System.out.println("O resultado; nome: "+a[x].getNome()+", altura: "+a[x].getAltura()+", idade: "+a[x].getIdade());
            }
-       }
-        return "O nome não foi encontardo!";
+           else 
+               if(x == n)
+               System.out.println ("O nome não foi encontardo!");
+       }      
    }
 //--------------------------------------------------------------              
    public void insert(String nome, double altura, int idade)
       {
+          if (n == 0)
+            a[0] = new Jogador(nome, altura, idade);
           int j;
-          a[n] = new Jogador(nome, altura, idade);
       for(j=0; j<n; j++)        // localiza onde esse elemento se encaixa
-         if(a[j].getIdade() < idade)            // Usando aqui busca linear
+         if(a[j].getIdade() <= idade)            // Usando aqui busca linear
          {a[n] = new Jogador(nome, altura, idade);}// insere o elemento na posição necessária
          else{
              a[n] = a[n-1];
@@ -74,10 +75,10 @@ public class Estrutura {
       n++;
       }
 //--------------------------------------------------------------
-   public boolean delete(String searchName)
+   public boolean delete(String e)
       {                              
       for(int j=0; j<n; j++){        // varre o vetor 
-         if( searchName.equals(a[j].getNome())){
+         if( a[j].getNome().charAt(0) == e.charAt(0)){
             for(int k=j; k<n; k++){ // move os mais altos para "frente"
                 System.out.println("O nome " + a[k].getNome() + " foi excluido na linha " + (k+1) + " do vetor.");
                 if (k+1==n) 

@@ -26,5 +26,8 @@ public class Jogador
 //--------------------------------------------------------------
    public String getNome()           // retorna a idade do jogador
       { return nome; }
+   
+   public double getAltura()           // retorna a idade do jogador
+      { return altura; }
 }
 
