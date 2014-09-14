@@ -32,8 +32,13 @@ public class Usuaria {
             c.inserir(nome, cor, tamanho);
         }
         
-        c.ordenaTamanho();
+        System.out.println("\n\nOrdenado por Cor:");
+        c.ordenaCor();
         c.mostrarAnimal(); 
+        
+        System.out.println("\n\nOrdenando por tamanho:");
+        c.ordenaTamanho();
+        c.mostrarAnimal();
    
    }
 }

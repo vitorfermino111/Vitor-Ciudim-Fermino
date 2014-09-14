@@ -51,6 +51,23 @@ public class Conteiner {
         }
     }
     
+    public void ordenaCor()
+    {
+        int x, y;
+
+        for (x = 1; x<nEl; x++)
+        {
+            Animal tempo = m[x];
+            y = x;
+            while (y>0 && m[y-1].getCor().compareTo(tempo.getCor()) >= 0)
+            {
+                m[y] = m[y-1];               
+                y--;
+            }
+            m[y] = tempo;
+        }
+    }
+    
     public void mostrarAnimal()
     {
         for (int t = 0; t<nEl; t++)
