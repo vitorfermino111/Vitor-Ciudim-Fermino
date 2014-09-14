@@ -37,9 +37,9 @@ public class Animal {
         return tamanho;
     }
     
-    public String displayAnimal()
+    public void displayAnimal()
     {
-        return ("Nome: "+nome+". Tamanho: "+tamanho+". Cor: "+cor);
+        System.out.println("Nome: "+nome+". Tamanho: "+tamanho+". Cor: "+cor);
     }
     
 }
