@@ -4,23 +4,22 @@
  * and open the template in the editor.
  */
 
-package e7;
+package e8;
 
-import e7.NoConteiner;
 import java.util.Scanner;
 
 /**
  *
- * @author Nit0
+ * @author Aluno
  */
 public class NoUsuario {
-    public static void main(String[] args)
-      {
+    public static void main (String [] args)
+    {
       NoConteiner theList = new NoConteiner();
       Scanner i = new Scanner(System.in);
       Scanner s = new Scanner(System.in);
-      boolean ver = true;
-      while (ver == true)
+      boolean ve = true;
+      while (ve == true)
       {
           System.out.println("\n Bem vindo a hospital cura total, escolha a opção:");
             System.out.println(" Digite 1 para cadastra nome.");
@@ -36,7 +35,9 @@ public class NoUsuario {
                    String nome = s.nextLine();
                    System.out.println("Informe o nome da sua pessoa querida:");
                    String nomep = s.nextLine();
-                   theList.insertFirst(nome, nomep);
+                   System.out.println("Informe a sua idade:");
+                   int ida = s.nextInt();
+                   //theList.insertFirst(nome, nomep, ida);
                    System.out.println("Cadastro feito com sucesso");
                    System.out.println("");
                    break;
@@ -59,12 +60,12 @@ public class NoUsuario {
                 }
                 case 4:
                 {
-                    ver = false;
+                    ve = false;
                     System.out.println("Aplicação finalizada!");
                     break;                       
                 }
             }
           
-        }            
-      }
+        }
+    }
 }
