@@ -40,4 +40,9 @@ public class NoPessoa {
    {
        return Idade;
    }
+   
+   public String getNome()
+   {
+       return Nome;
+   }
 }

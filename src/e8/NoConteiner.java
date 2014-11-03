@@ -33,32 +33,25 @@ public class NoConteiner {
    
    public void insertOrdenado(String nome, String nomePessoa, int ida)
    {
-       if (first == null)
-       {
-           NoPessoa newNo = new NoPessoa(nome, nomePessoa, ida);
-           newNo.setNext(first);     
-           first = newNo;
-       }
-       else
-       {
-            NoPessoa current = first;              // a bola da vez é o first
-            NoPessoa previous = first;              // e precisamos referenciar o anterior também!
-            while(current.getIdade() <= ida && current != null )
+            NoPessoa current = first;            
+            NoPessoa previous = null;   
+            NoPessoa newNo = new NoPessoa(nome, nomePessoa, ida);
+            while(current != null && ida > current.getIdade())
             {
-                previous = current;          // caminhamos "um nó" pra frente ... 
-                current = current.getNext();
+                    previous = current;          // caminhamos "um nó" pra frente ... 
+                    current = current.getNext();     // caminhamos "um nó" pra frente ...
             }
-            if(current == first)
+            if(previous == null)
             {
-                NoPessoa newNo = new NoPessoa(nome, nomePessoa, ida);
-                newNo.setNext(first);     
+                newNo.setNext(first);
                 first = newNo;
             }
             else
             {
-                
+                previous.setNext(newNo);
+                newNo.setNext(current);
             }
-       }
+       
    }
 // -------------------------------------------------------------
    public NoPessoa deleteFirst()     
@@ -79,4 +72,29 @@ public class NoConteiner {
          }
       System.out.println("");
       }
+//--------------------------------------------------------------
+   public String buscaNome(String n){
+      NoPessoa current = first;       // começamos pelo começo da lista
+      while(current != null)      // enquanto não chegarmos no item null ...
+         {
+         if (current.getNome().equals(n)) {
+             return "O nome "+current.getNome()+" foi encontado." ;
+         }           
+         current = current.getNext();  // movemos a lista para o proximo
+      }
+    return "Não Encontrado";
+   }
+//--------------------------------------------------------------
+   public String buscaIdade(int i){
+      NoPessoa current = first;       // começamos pelo começo da lista
+      while(current != null)      // enquanto não chegarmos no item null ...
+         {
+         if (current.getIdade() == i) {
+             return "A idade "+String.valueOf(current.getIdade())+" foi encontado." ;
+         }           
+         current = current.getNext();  // movemos a lista para o proximo
+      }
+    return "Não Encontrado";
+   }
+// -------------------------------------------------------------
 }
